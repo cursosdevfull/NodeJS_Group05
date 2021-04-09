@@ -1,0 +1,23 @@
+{
+  "name": "NodeJS_Group05",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cursosdevfull/NodeJS_Group05.git"
+  },
+  "keywords": [],
+  "author": "Sergio Hidalgo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cursosdevfull/NodeJS_Group05/issues"
+  },
+  "homepage": "https://github.com/cursosdevfull/NodeJS_Group05#readme",
+  "dependencies": {
+    "nodemailer": "^6.5.0"
+  }
+}
