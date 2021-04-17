@@ -1,5 +1,5 @@
 import express from 'express';
-import { UserController } from './user.controller';
+import { MedicController } from './medic.controller';
 const controller = new UserController();
 const route = express.Router();
 
