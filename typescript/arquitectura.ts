@@ -5,6 +5,7 @@ interface UserEntity {
   cmp: string;
   email: string;
   password: string;
+  refreshToken: string;
 }
 
 interface DriverEntity {
@@ -51,19 +52,49 @@ interface RepositoryBase<T> {
   remove(user: T): Result<T>;
 }
 
+interface NotificationRepository {
+  sent(
+    emailRecipient: string,
+    emailSender: string,
+    subject: string,
+    body: string,
+    isHTML: boolean
+  ): boolean;
+}
+
 interface UserRepository extends RepositoryBase<UserEntity> {
   userExists(user: UserEntity): UserEntity;
+}
+
+class TokensService {
+  generateAccessToken() {}
+
+  static generateRefreshToken(): string {
+    return 'abc234557';
+  }
 }
 
 class UserUseCase {
   userRepository: UserRepository;
 
-  constructor(userRepository: UserRepository) {
+  constructor(
+    userRepository: UserRepository,
+    private notificationRepository: NotificationRepository
+  ) {
     this.userRepository = userRepository;
   }
 
   insert(user: UserEntity): Result<UserEntity> {
+    const refreshToken = TokensService.generateRefreshToken();
+    user.refreshToken = refreshToken;
     const result: Result<UserEntity> = this.userRepository.insert(user);
+    this.notificationRepository.sent(
+      'administrador@correo',
+      'sergio@correo',
+      'Nuevo registro',
+      'Se registró Juan Perez',
+      false
+    );
     return result;
   }
 
@@ -73,37 +104,33 @@ class UserUseCase {
 }
 
 // Infraestructura
-class UserOperation implements UserRepository {
-  insert(user: UserEntity): Result<UserEntity> {
+abstract class OperationRepository<T> {
+  insert(entity: T): Result<T> {
     const trace: string = this.getTrace();
-    const data: UserEntity = this.process(user);
+    const data: T = this.process(entity);
     return { trace, payload: { data } };
   }
 
-  update(user: UserEntity): Result<UserEntity> {
+  update(entity: T): Result<T> {
     const trace: string = this.getTrace();
-    const data: UserEntity = this.process(user);
+    const data: T = this.process(entity);
     return { trace, payload: { data } };
   }
 
-  list(): Result<UserEntity[]> {
+  list(): Result<T[]> {
     const trace: string = this.getTrace();
-    const data: UserEntity[] = [];
+    const data: T[] = [];
     return { trace, payload: { data } };
   }
 
-  remove(user: UserEntity): Result<UserEntity> {
+  remove(entity: T): Result<T> {
     const trace: string = this.getTrace();
-    const data: UserEntity = this.process(user);
+    const data: T = this.process(entity);
     return { trace, payload: { data } };
   }
 
-  userExists(user: UserEntity): UserEntity {
-    return user;
-  }
-
-  process(user: UserEntity): UserEntity {
-    return user;
+  process(entity: T): T {
+    return entity;
   }
 
   getTrace(): string {
@@ -111,9 +138,33 @@ class UserOperation implements UserRepository {
   }
 }
 
+class NotificationEmail implements NotificationRepository {
+  sent(
+    emailRecipient: string,
+    emailSender: string,
+    subject: string,
+    body: string,
+    isHTML: boolean
+  ): boolean {
+    return true;
+  }
+}
+
+class UserOperation
+  extends OperationRepository<UserEntity>
+  implements UserRepository {
+  userExists(user: UserEntity): UserEntity {
+    return user;
+  }
+}
+
 // Controlador
 const userOperation: UserRepository = new UserOperation();
-const userUseCase: UserUseCase = new UserUseCase(userOperation);
+const notificationEmail: NotificationEmail = new NotificationEmail();
+const userUseCase: UserUseCase = new UserUseCase(
+  userOperation,
+  notificationEmail
+);
 
 class UserController {
   static insert(req: any, res: any = '') {
