@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-
+import { IError } from '../../helper/errors.handler';
 export class Validators {
   static validate(objSchema: any) {
     return (req: Request, res: Response, next: NextFunction) => {
@@ -29,30 +29,16 @@ export class Validators {
         const lengthResults = results.length;
         for (let ind = 0; ind < lengthResults; ind++) {
           if (results[ind].hasOwnProperty('error')) {
-            return res
-              .status(411)
-              .json({ status: 411, stack: results[ind].error });
+            const err: IError = new Error('Error in parameters');
+            err.message = 'Error in parameters';
+            err.status = 411;
+            err.name = 'Parameters Error';
+            err.stack = results[ind].error;
+            return next(err);
           }
         }
         next();
       });
-
-      /*     let dataToValidate;
-
-    switch (location) {
-      case 'params':
-        dataToValidate = req.params;
-        break;
-      case 'body':
-        dataToValidate = req.body;
-        break;
-    }
-    const result = schema.validate(dataToValidate);
-    if (result.hasOwnProperty('error')) {
-      return res.status(411).json({ status: 411, stack: result.error });
-    }
-
-    next(); */
     };
   }
 }

@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { UserUseCase } from '../application/user.usecase';
 import { UserModel } from '../domain/user.model';
 import { UserOperation } from '../infraestructure/user.operation';
@@ -26,7 +26,7 @@ export class UserController {
     res.json(result);
   }
 
-  insert(req: Request, res: Response) {
+  async insert(req: Request, res: Response): Promise<any> {
     const body = req.body;
     const user: Partial<UserModel> = {
       name: body.name,
