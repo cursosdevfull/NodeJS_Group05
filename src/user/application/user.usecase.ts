@@ -14,7 +14,7 @@ export class UserUseCase {
     return result;
   }
 
-  listOne(user: UserModel): Result<UserModel> {
+  listOne(user: Partial<UserModel>): Result<UserModel> {
     const result: Result<UserModel> = this.userRepository.listOne(user);
     return result;
   }
@@ -24,17 +24,17 @@ export class UserUseCase {
     return result;
   }
 
-  insert(user: UserModel): Result<UserModel> {
+  insert(user: Partial<UserModel>): Result<UserModel> {
     const result: Result<UserModel> = this.userRepository.insert(user);
     return result;
   }
 
-  update(user: UserModel): Result<UserModel> {
+  update(user: Partial<UserModel>): Result<UserModel> {
     const result: Result<UserModel> = this.userRepository.update(user);
     return result;
   }
 
-  remove(user: UserModel): Result<UserModel> {
+  remove(user: Partial<UserModel>): Result<UserModel> {
     const result: Result<UserModel> = this.userRepository.remove(user);
     return result;
   }
