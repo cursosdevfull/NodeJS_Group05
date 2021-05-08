@@ -4,6 +4,5 @@ export interface UserModel {
   email: string;
   password: string;
   refreshToken: string;
-  roles: any;
   photo: string;
 }

@@ -31,7 +31,6 @@ export class UserController {
     const user: Partial<UserModel> = {
       name: body.name,
       email: body.email,
-      roles: body.roles,
       photo: body.photo,
       password: body.password,
     };
