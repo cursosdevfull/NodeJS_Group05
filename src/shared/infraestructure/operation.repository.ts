@@ -75,15 +75,14 @@ export abstract class OperationRepository<T> {
     return ResponseDto.format(trace, recordToUpdate);
   }
 
-  async remove(entity: T): Promise<Result<T>> {
+  async remove(where: object): Promise<Result<T>> {
     const trace: string = OperationService.getTrace();
     const repository: Repository<T> = getRepository(this.entity);
-    const newEntity: any = Object.assign({}, entity);
-    const recordToDelete: T = await repository.findOne(newEntity.id);
+    const recordToDelete: T = await repository.findOne(where);
 
     if (recordToDelete) {
-      await repository.delete(newEntity.id);
-      recordToDelete;
+      await repository.delete(where);
+      return ResponseDto.format(trace, recordToDelete);
     }
 
     return null;

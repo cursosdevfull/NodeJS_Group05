@@ -47,7 +47,7 @@ export class UseCaseRepository<T, U extends RepositoryBase<T>> {
     return await this.operation.update(entity, where, relations);
   }
 
-  async remove(entity: T): Promise<Result<T>> {
-    return await this.operation.remove(entity);
+  async remove(where: object): Promise<Result<T>> {
+    return await this.operation.remove(where);
   }
 }

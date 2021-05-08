@@ -20,7 +20,6 @@ export const schemas = {
       password: Joi.string()
         .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
         .required(),
-      roles: Joi.string().required(),
       photo: Joi.string(),
     }),
   },
@@ -30,7 +29,6 @@ export const schemas = {
       name: Joi.string(),
       email: Joi.string().email(),
       password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
-      roles: Joi.string(),
       photo: Joi.string(),
     }),
   },

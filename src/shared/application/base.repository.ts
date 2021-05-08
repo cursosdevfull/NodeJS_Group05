@@ -10,7 +10,7 @@ export interface RepositoryBase<T> {
     relations: string[],
     order: object
   ): Promise<Result<T>>;
-  insert(entity: T): Promise<Result<T>>;
+  insert(entity: Partial<T>): Promise<Result<T>>;
   update(entity: T, where: object, relations: string[]): Promise<Result<T>>;
-  remove(entity: T): Promise<Result<T>>;
+  remove(where: object): Promise<Result<T>>;
 }
