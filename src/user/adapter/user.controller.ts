@@ -1,10 +1,12 @@
 import { Request, Response } from 'express';
+import { RoleOperation } from '../../role/infraestructure/role.operation';
 import { UserUseCase } from '../application/user.usecase';
 import { UserModel } from '../domain/user.model';
 import { UserOperation } from '../infraestructure/user.operation';
 
 const operation = new UserOperation();
-const useCase = new UserUseCase(operation);
+const operationRole = new RoleOperation();
+const useCase = new UserUseCase(operation, operationRole);
 export class UserController {
   async list(req: Request, res: Response) {
     const result = await useCase.list();
@@ -33,6 +35,7 @@ export class UserController {
       email: body.email,
       photo: body.photo,
       password: body.password,
+      roles: body.roles,
     };
     const result = await useCase.insertCipher(user);
     res.json(result);

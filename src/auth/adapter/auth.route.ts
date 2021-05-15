@@ -11,4 +11,10 @@ route.post(
   Validators.validate(schemas.LOGIN),
   ErrorHandler.asyncError(controller.login)
 );
+
+route.get(
+  '/request-new-access-token/:refreshToken',
+  Validators.validate(schemas.REFRESH_TOKEN),
+  ErrorHandler.asyncError(controller.getNewAccessToken)
+);
 export { route };

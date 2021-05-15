@@ -2,6 +2,10 @@ import { Application } from 'express';
 import http from 'http';
 import { AddressInfo } from 'net';
 
+import yenv from 'yenv';
+
+const env = yenv();
+
 interface Address extends AddressInfo {
   port: number;
 }
@@ -17,7 +21,7 @@ export class ServerBootstrap implements IServerBootstrap {
     return new Promise((resolve, reject) => {
       const server = http.createServer(this.app);
       server
-        .listen(4000)
+        .listen(env.PORT)
         .on('listening', () => {
           console.log(
             `Server is running on port ${(server.address() as Address).port}`

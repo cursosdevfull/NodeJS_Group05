@@ -21,6 +21,7 @@ export const schemas = {
         .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
         .required(),
       photo: Joi.string(),
+      roles: Joi.array().required(),
     }),
   },
   UPDATE: {
