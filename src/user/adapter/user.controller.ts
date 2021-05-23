@@ -35,7 +35,7 @@ export class UserController {
       email: body.email,
       photo: body.photo,
       password: body.password,
-      roles: body.roles,
+      roles: body.roles.map((role: string) => +role),
     };
     const result = await useCase.insertCipher(user);
     res.json(result);

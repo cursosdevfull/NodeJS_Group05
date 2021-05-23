@@ -1,2 +1,4 @@
 node_modules
 typeorm_test
+dist
+cache

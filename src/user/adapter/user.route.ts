@@ -5,6 +5,7 @@ import { schemas } from './user.schema';
 import { ErrorHandler } from '../../helper/errors.handler';
 import { AuthenticationGuard } from '../../shared/infraestructure/guards/authentication.guard';
 import { AuthorizationGuard } from '../../shared/infraestructure/guards/authorization.guard';
+import { Upload } from '../../shared/infraestructure/middlewares/upload.middleware';
 const controller = new UserController();
 const route = express.Router();
 
@@ -29,6 +30,7 @@ route.post(
   '/',
   AuthenticationGuard.canActivate,
   AuthorizationGuard.canActivate('ADMIN'),
+  Upload.S3('photo', 'image/png', 'image/jpeg', 'image/jpg', 'image/gif'),
   Validators.validate(schemas.INSERT),
   ErrorHandler.asyncError(controller.insert)
 );
