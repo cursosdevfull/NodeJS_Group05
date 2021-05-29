@@ -8,10 +8,7 @@ const env = yenv();
 
 AWS.config.update({ region: 'us-east-2' });
 
-const S3 = new AWS.S3({
-  accessKeyId: env.AWS.CREDENTIALS.ACCESS_KEY_ID,
-  secretAccessKey: env.AWS.CREDENTIALS.SECRET_ACCESS_KEY,
-});
+const S3 = new AWS.S3();
 
 export class Upload {
   static S3(fieldName: string, ...mimeTypesAllowed: string[]) {
