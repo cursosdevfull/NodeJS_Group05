@@ -1,0 +1,7 @@
+{
+  "name": "Sergio",
+  "email": "sergio@correo.com",
+  "password": "123",
+  "roles": ["1", "2", "3"],
+  "photo": "user.jpg"
+}

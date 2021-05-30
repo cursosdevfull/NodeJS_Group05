@@ -1,0 +1,23 @@
+{
+  "trace": "4bbeb551-dea2-42cc-90a3-b85c37474f31",
+  "payload": {
+    "data": [
+      {
+        "id": 1,
+        "name": "Sergio",
+        "email": "sergio@correo.com",
+        "password": "$2a$10$2S.2yWufeTwyd7BwtH9dh.NDh/9PUjeIjtxU4osANgKImjlbECPNO",
+        "refreshToken": "6aab9835-a6f4-4ec7-9193-69f6cc3e80f0",
+        "photo": "https://cursonodejs06.s3.us-east-2.amazonaws.com/1622303234916.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Sergio",
+        "email": "sergio@correo.com",
+        "password": "$2a$10$2S.2yWufeTwyd7BwtH9dh.NDh/9PUjeIjtxU4osANgKImjlbECPNO",
+        "refreshToken": "6aab9835-a6f4-4ec7-9193-69f6cc3e80f0",
+        "photo": "https://cursonodejs06.s3.us-east-2.amazonaws.com/1622303234916.jpg"
+      }
+    ]
+  }
+}
