@@ -3,3 +3,4 @@ test
 typeorm_test
 dist
 cache
+reports
