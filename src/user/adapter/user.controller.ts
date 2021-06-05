@@ -1,15 +1,12 @@
 import { Request, Response } from 'express';
-import { RoleOperation } from '../../role/infraestructure/role.operation';
 import { UserUseCase } from '../application/user.usecase';
 import { UserModel } from '../domain/user.model';
-import { UserOperation } from '../infraestructure/user.operation';
 
-const operation = new UserOperation();
-const operationRole = new RoleOperation();
-const useCase = new UserUseCase(operation, operationRole);
 export class UserController {
+  constructor(private useCase: UserUseCase) {}
+
   async list(req: Request, res: Response) {
-    const result = await useCase.list();
+    const result = await this.useCase.list();
     res.json(result);
   }
 
@@ -17,14 +14,14 @@ export class UserController {
     const params = req.params;
     const id = +params.id;
     const user: Partial<UserModel> = { id };
-    const result = await useCase.listOne(user);
+    const result = await this.useCase.listOne(user);
     res.json(result);
   }
 
   async listByPage(req: Request, res: Response) {
     const params = req.params;
     const page = +params.page;
-    const result = await useCase.listByPage(page, 20);
+    const result = await this.useCase.listByPage(page, 20);
     res.json(result);
   }
 
@@ -37,7 +34,7 @@ export class UserController {
       password: body.password,
       roles: body.roles.map((role: string) => +role),
     };
-    const result = await useCase.insertCipher(user);
+    const result = await this.useCase.insertCipher(user);
     res.json(result);
   }
 
@@ -48,14 +45,14 @@ export class UserController {
     const user: UserModel = body;
     const id = +params.id;
 
-    const result = await useCase.update(user, { id });
+    const result = await this.useCase.update(user, { id });
     res.json(result);
   }
 
   async remove(req: Request, res: Response) {
     const params = req.params;
     const id = +params.id;
-    const result = await useCase.remove({ id });
+    const result = await this.useCase.remove({ id });
     res.json(result);
   }
 }

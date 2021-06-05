@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\Cursos\NodeJS_Group05\test\prueba.spec.ts">
-    <testCase name="prueba.ts prueba 1" duration="6"/>
+  <file path="D:\Cursos\node05\test\unit\user.controller.spec.ts">
+    <testCase name="user.controller list" duration="8"/>
+    <testCase name="user.controller listOne" duration="2"/>
+    <testCase name="user.controller insert" duration="1"/>
   </file>
-  <file path="D:\Cursos\NodeJS_Group05\test\unit\user.usecase.spec.ts">
-    <testCase name="user.usecase.ts list" duration="9"/>
+  <file path="D:\Cursos\node05\test\unit\user.usecase.spec.ts">
+    <testCase name="user.usecase.ts list" duration="8"/>
     <testCase name="user.usecase.ts insertCipher" duration="2"/>
-  </file>
-  <file path="D:\Cursos\NodeJS_Group05\test\integration\server.bootstrap.spec.ts">
-    <testCase name="server.bootstrap.ts initialize server" duration="78"/>
-  </file>
-  <file path="D:\Cursos\NodeJS_Group05\test\integration\user.route.spec.ts">
-    <testCase name="user.route.ts get / without token" duration="32"/>
   </file>
 </testExecutions>

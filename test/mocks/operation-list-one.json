@@ -1,0 +1,13 @@
+{
+  "trace": "c86f73d7-2207-48df-94a6-f6bbd77df5dd",
+  "payload": {
+    "data": {
+      "id": 1,
+      "name": "Sergio",
+      "email": "sergio@correo.com",
+      "password": "$2a$10$81L0UPKHR1TE/amGbThi3egwAgq7EeI9ROH6gSuI9.D/3QFpuVA3C",
+      "refreshToken": "4ec93d73-c5a4-4af7-916d-23af547d01d9",
+      "photo": "1622895433115.jpg"
+    }
+  }
+}
