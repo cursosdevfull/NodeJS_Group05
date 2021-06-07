@@ -1,1 +1,0 @@
-const nameUser = 'Sergio';

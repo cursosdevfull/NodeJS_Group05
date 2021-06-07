@@ -42,14 +42,13 @@ export class AuthUseCase {
 
     if (!user) {
       return null;
-    } else {
-      const accessToken = UserService.generateAccessToken(
-        user.name,
-        user.photo,
-        user.roles.map((role) => role.name)
-      );
-
-      return { accessToken, refreshToken: user.refreshToken };
     }
+    const accessToken = UserService.generateAccessToken(
+      user.name,
+      user.photo,
+      user.roles.map((role) => role.name)
+    );
+
+    return { accessToken, refreshToken: user.refreshToken };
   }
 }

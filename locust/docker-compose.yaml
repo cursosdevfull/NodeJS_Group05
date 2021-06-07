@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  master:
+    container_name: 'maestro'
+    build: .
+    ports:
+      - '8089:8089'
+    command: '--host=http://a7aa6a96cf88.ngrok.io --master'
+
+  slave:
+    build: .
+    command: '--host=http://a7aa6a96cf88.ngrok.io --slave --master-host=maestro'

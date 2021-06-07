@@ -1,0 +1,27 @@
+{
+  "trace": "70cad67d-a93e-401f-86da-71e3db53445c",
+  "payload": {
+    "data": {
+      "name": "Sergio",
+      "email": "sergio@correo.com",
+      "photo": "1622303234916.jpg",
+      "password": "$2a$10$2S.2yWufeTwyd7BwtH9dh.NDh/9PUjeIjtxU4osANgKImjlbECPNO",
+      "roles": [
+        {
+          "id": 1,
+          "name": "ADMIN"
+        },
+        {
+          "id": 2,
+          "name": "OPERATOR"
+        },
+        {
+          "id": 3,
+          "name": "MEDIC"
+        }
+      ],
+      "refreshToken": "6aab9835-a6f4-4ec7-9193-69f6cc3e80f0",
+      "id": 2
+    }
+  }
+}
