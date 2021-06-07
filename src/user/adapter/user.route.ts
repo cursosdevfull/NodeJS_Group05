@@ -9,6 +9,7 @@ import { Upload } from '../../shared/infraestructure/middlewares/upload.middlewa
 import { UserOperation } from '../infraestructure/user.operation';
 import { RoleOperation } from '../../role/infraestructure/role.operation';
 import { UserUseCase } from '../application/user.usecase';
+import { CacheRedis } from '../../shared/infraestructure/middlewares/cache.middleware';
 
 const operation = new UserOperation();
 const operationRole = new RoleOperation();
@@ -20,6 +21,7 @@ route.get(
   '/',
   AuthenticationGuard.canActivate,
   AuthorizationGuard.canActivate('ADMIN', 'MEDIC'),
+  /*   CacheRedis.handle('LIST_USERS'), */
   controller.list.bind(controller)
 );
 route.get(
@@ -36,7 +38,7 @@ route.get(
 route.post(
   '/',
   AuthenticationGuard.canActivate,
-  //AuthorizationGuard.canActivate('ADMIN'),
+  // AuthorizationGuard.canActivate('ADMIN'),
   Upload.S3('photo', 'image/png', 'image/jpeg', 'image/jpg', 'image/gif'),
   Validators.validate(schemas.INSERT),
   ErrorHandler.asyncError(controller.insert.bind(controller))

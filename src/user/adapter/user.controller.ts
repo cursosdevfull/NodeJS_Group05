@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { RedisBootstrap } from '../../bootstrap/redis.bootstrap';
 import { UserUseCase } from '../application/user.usecase';
 import { UserModel } from '../domain/user.model';
 
@@ -7,6 +8,8 @@ export class UserController {
 
   async list(req: Request, res: Response) {
     const result = await this.useCase.list();
+    //console.log('identifier', res.locals.cacheIdentifier);
+    //RedisBootstrap.set(res.locals.cacheIdentifier, JSON.stringify(result));
     res.json(result);
   }
 

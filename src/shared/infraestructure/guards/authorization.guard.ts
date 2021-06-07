@@ -10,7 +10,8 @@ export class AuthorizationGuard {
 
       for (const role of roles) {
         if (rolesAllowed.indexOf(role) > -1) {
-          (roleMatched = true), next();
+          roleMatched = true;
+          next();
           break;
         }
       }

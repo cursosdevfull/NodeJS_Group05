@@ -9,7 +9,7 @@ const tokenExpired =
   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiU2VyZ2lvIiwicGhvdG8iOiIxNjIxNjk5NDg2MjU5LnBuZyIsInJvbGVzIjpbIkFETUlOIiwiT1BFUkFUT1IiLCJNRURJQyJdLCJpYXQiOjE2MjE3MDAwODUsImV4cCI6MTYyMTcwMDE0NX0.mWNKOYdmFsWd_C7GqWU7Bhlj2A7b-2Z5CAySOot2v6E';
 
 const tokenValid =
-  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiU2VyZ2lvIiwicGhvdG8iOiIxNjIyODk1NDMzMTE1LmpwZyIsInJvbGVzIjpbIkFETUlOIiwiT1BFUkFET1IiLCJNw4lESUNPIl0sImlhdCI6MTYyMjg5NTQ3NCwiZXhwIjoxNjQ5MTc1NDc0fQ.vKijYDvoVFrHGltFHZUwR9zvzN4sNdaTgZ2YTt9qQ3U';
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiU2VyZ2lvIiwicGhvdG8iOiIxNjIyODk1NDMzMTE1LmpwZyIsInJvbGVzIjpbIkFETUlOIiwiT1BFUkFET1IiLCJNw4lESUNPIl0sImlhdCI6MTYyMjkyMDI4OCwiZXhwIjoxOTM4MjgwMjg4fQ.dvOZwg96uyHjd7rKJpe26DBI-lwYfeNELUH1zKI_Zfs';
 
 const TIMEOUT = 24 * 60 * 60 * 1000;
 const numberRandom = Math.round(Math.random() * 1000000 + 1);
@@ -91,17 +91,21 @@ describe('user.route.ts', () => {
     TIMEOUT
   );
 
-  it('post /users', async () => {
-    const response: any = await request(app)
-      .post('/users')
-      .field('name', 'username-' + numberRandom)
-      .field('email', numberRandom + '@user.com')
-      .field('password', numberRandom)
-      .field('roles', 1)
-      .field('roles', 2)
-      .set('Authorization', `Bearer ${tokenValid}`);
+  it(
+    'post /users',
+    async () => {
+      const response: any = await request(app)
+        .post('/users')
+        .field('name', 'username-' + numberRandom)
+        .field('email', numberRandom + '@user.com')
+        .field('password', numberRandom)
+        .field('roles', 1)
+        .field('roles', 2)
+        .set('Authorization', `Bearer ${tokenValid}`);
 
-    expect(response.statusCode).toBe(411);
-    expect(response.body.message).toBe('Error in parameters');
-  });
+      expect(response.statusCode).toBe(411);
+      expect(response.body.message).toBe('Error in parameters');
+    },
+    TIMEOUT
+  );
 });

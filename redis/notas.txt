@@ -1,0 +1,1 @@
+docker run -d --name=redis-container -v redis-data:/data -p 6379:6379 redis:6.0.5-alpine redis-server --requirepass todovale

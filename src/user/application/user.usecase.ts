@@ -1,7 +1,6 @@
 import { RoleRepository } from '../../role/application/role.repository';
 import { Result } from '../../shared/application/result.interface';
 import { UseCaseRepository } from '../../shared/application/usecase.repository';
-import { OperationRepository } from '../../shared/infraestructure/operation.repository';
 import { UserModel } from '../domain/user.model';
 import { UserRepository } from './user.repository';
 import { UserService } from './user.service';

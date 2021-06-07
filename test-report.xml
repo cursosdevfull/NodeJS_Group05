@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="D:\Cursos\node05\test\unit\user.controller.spec.ts">
-    <testCase name="user.controller list" duration="8"/>
-    <testCase name="user.controller listOne" duration="2"/>
-    <testCase name="user.controller insert" duration="1"/>
+  <file path="D:\Cursos\node05\test\prueba.spec.ts">
+    <testCase name="prueba.ts prueba 1" duration="4"/>
   </file>
   <file path="D:\Cursos\node05\test\unit\user.usecase.spec.ts">
-    <testCase name="user.usecase.ts list" duration="8"/>
-    <testCase name="user.usecase.ts insertCipher" duration="2"/>
+    <testCase name="user.usecase.ts list" duration="16"/>
+    <testCase name="user.usecase.ts insertCipher" duration="3"/>
+  </file>
+  <file path="D:\Cursos\node05\test\unit\user.controller.spec.ts">
+    <testCase name="user.controller list" duration="8"/>
+    <testCase name="user.controller listOne" duration="1"/>
+    <testCase name="user.controller insert" duration="1"/>
+  </file>
+  <file path="D:\Cursos\node05\test\integration\server.bootstrap.spec.ts">
+    <testCase name="server.bootstrap.ts initialize server" duration="96"/>
+  </file>
+  <file path="D:\Cursos\node05\test\integration\user.route.spec.ts">
+    <testCase name="user.route.ts get / without token" duration="26"/>
+    <testCase name="user.route.ts get / with token expired" duration="7"/>
+    <testCase name="user.route.ts get / with token valid" duration="121"/>
+    <testCase name="user.route.ts post /users" duration="1658"/>
+    <testCase name="user.route.ts post /users" duration="10"/>
   </file>
 </testExecutions>
